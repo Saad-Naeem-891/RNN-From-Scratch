@@ -1,10 +1,13 @@
 import numpy as np
 
 def tanh(x):
-    return np.tanh(x)
+    exp_pos = np.exp(x)
+    exp_neg = np.exp(-x)
+    return (exp_pos - exp_neg) / (exp_pos + exp_neg)
 
 def tanh_derivative(x):
-    return 1 - np.tanh(x) ** 2
+    t = tanh(x)
+    return 1 - t ** 2
 
 def softmax(x):
     e_x = np.exp(x - np.max(x))
